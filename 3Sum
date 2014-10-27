@@ -1,0 +1,27 @@
+// 题目中数组可包含重复元素，需剪枝加速。speed O(n2):
+public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
+  Arrays.sort(num);
+  ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+  if(num.length<3) return result;
+  for(int i=0;i<num.length-2;){
+      int b = i+1, e = num.length-1;
+      while(b<e){
+          if(num[b]+num[e]+num[i]==0) {
+              ArrayList <Integer> temp = new ArrayList <Integer>();
+              temp.add(num[i]);temp.add(num[b]);temp.add(num[e]);
+              if(!result.contains(temp))
+                  result.add(temp);
+              b++;e--;
+              while(b<(num.length-1) && num[b-1]==num[b]) b++;//剪枝
+              while(e>1 && num[e+1]==num[e]) e--;//剪枝
+          }
+          else if(num[b]+num[e]+num[i]<0)
+              b++;
+          else
+              e--;
+      }
+      i++;
+      while(i<(num.length-2) && num[i-1]==num[i]) i++;//剪枝
+  }
+  return result;
+} 
