@@ -1,0 +1,29 @@
+    public ArrayList<ArrayList<Integer>> fourSum(int[] num, int target) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        int L = num.length;
+        if(L<4) return res;
+        Arrays.sort(num);
+        for(int a=0; a< L-3;){
+            for(int b=a+1; b<L-2;){
+                int t = target - num[a] - num[b];
+                int c=b+1, d=L-1;
+                while(c<d){
+                    int s = num[c]+num[d];
+                    if(s==t){
+                        ArrayList<Integer> temp = new ArrayList<Integer>();
+                        temp.add(num[a]); temp.add(num[b]); temp.add(num[c]); temp.add(num[d]); 
+                        res.add(temp); c++; d--;
+                        while(c<L-1 && num[c]==num[c-1]) c++;
+                        while(d>2 && num[d]==num[d+1]) d--;
+                    }
+                    else if(s<t) {c++; while(c<L-1 && num[c]==num[c-1]) c++;}
+                    else {d--; while(d>2 && num[d]==num[d+1]) d--;}
+                }
+                b++;
+                while(b<L-2 && num[b]==num[b-1]) b++;
+            }
+            a++;
+            while(a<L-3 && num[a]==num[a-1]) a++;
+        }
+        return res;
+    }
