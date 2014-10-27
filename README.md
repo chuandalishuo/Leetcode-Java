@@ -8,8 +8,8 @@ Solutions of leetcode coding problems
 
 1. Need to do more times
     
-        3Sum
-    
+        1. 3Sum
+        2. 
 2. Time consuming
 
 3. Difficult
