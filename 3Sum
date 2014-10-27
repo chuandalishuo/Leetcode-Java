@@ -1,4 +1,3 @@
-// 题目中数组可包含重复元素，需剪枝加速。speed O(n2):
 public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
   Arrays.sort(num);
   ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
