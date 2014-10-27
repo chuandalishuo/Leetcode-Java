@@ -9,7 +9,7 @@ Solutions of leetcode coding problems
 1. Need to do more times
     
         1. 3Sum
-        2. 3Sum Close
+        2. 3Sum Closest
 2. Time consuming
 
 3. Difficult
