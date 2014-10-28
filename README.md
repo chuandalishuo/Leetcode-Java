@@ -7,6 +7,7 @@ Solutions of leetcode coding problems
 0. Easy
 
         3. 4Sum
+        4. Add Binary
 1. Need to do more times
     
         1. 3Sum
