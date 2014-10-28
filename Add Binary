@@ -1,0 +1,14 @@
+public class Solution {
+    public String addBinary(String a, String b) {
+        int la=a.length(), lb=b.length(), l = Math.max(la,lb), addone=0;
+        char[] res = new char[l];
+        for(int i=1;i<=l; i++){
+            int cha = ((la-i)>=0)?(a.charAt(la-i)-'0'):0;
+            int chb = ((lb-i)>=0)?(b.charAt(lb-i)-'0'):0;
+            int s = cha+chb+addone;
+            addone = s/2;
+            res[l-i] = (char)(s%2 + '0');//转换，+‘0’
+        }
+        return (addone>0) ? ("1"+new String(res)) : (new String(res));
+    }
+}
