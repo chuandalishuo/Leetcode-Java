@@ -1,0 +1,22 @@
+public class Solution {
+    public int maxProfit(int[] prices) {
+        int l=prices.length;
+        if(l<=1) return 0;
+        int minf = prices[0], maxg = prices[l-1];
+        int[] f = new int[l], g = new int[l]; 
+        f[0] = 0; g[l-1] = 0;
+        for(int i=1; i<l; i++){
+            f[i] = Math.max(f[i-1], prices[i] - minf);
+            minf = Math.min(minf, prices[i]);
+        }
+        for(int i=l-2; i>=0; i--){
+            g[i] = Math.max(g[i+1], maxg - prices[i]);
+            maxg = Math.max(maxg, prices[i]);
+        }
+        int maxs = 0;
+        for(int i=0; i<l; i++){
+            maxs = Math.max(maxs, f[i]+g[i]);
+        }
+        return maxs;
+    }
+}
