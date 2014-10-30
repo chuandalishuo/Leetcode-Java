@@ -18,6 +18,7 @@ Solutions of leetcode coding problems
         12.Binary Tree Level Order Traversal (Recursive)
         15.Binary Tree post order Traversal (Recursive)
         16.Binary Tree Preorder Traversal (Recursive)
+        17.Binary Tree Zigzag Level Order Traversal (Recursive, Collections.reverse(List))
 1. Need to do more times
     
         1. 3Sum (夹逼,剪枝)
