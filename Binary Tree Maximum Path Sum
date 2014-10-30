@@ -1,0 +1,25 @@
+/**
+ * Definition for binary tree
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public int dfs(TreeNode root, ArrayList<Integer> res){
+        if(root==null) return 0;
+        int l = dfs(root.left,res);
+        int r = dfs(root.right,res);
+        int maxsum = root.val + Math.max(l,0) + Math.max(0,r);// if any child bigger than 0, means it can contribute to the maxsum
+        if(maxsum>res.get(0)) res.set(0,maxsum);
+        return root.val + Math.max(0,Math.max(l,r));// return one path of root itself is both subtree are less than 0
+    }
+    public int maxPathSum(TreeNode root) {
+        ArrayList<Integer> res = new ArrayList<Integer>();// List only contains one element, as a global variable
+        res.add(Integer.MIN_VALUE);
+        dfs(root, res);
+        return res.get(0);
+    }
+}
