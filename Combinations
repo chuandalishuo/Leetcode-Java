@@ -1,0 +1,16 @@
+public class Solution {
+    public void dfs(int n, int k, int start, ArrayList<ArrayList<Integer>> res, ArrayList<Integer> onecomb){
+        if(k==0&&!res.contains(onecomb)) {res.add(new ArrayList<Integer>(onecomb)); return;}
+        for(int i=start; i<=n; i++){
+            onecomb.add(i);
+            dfs(n,k-1,i+1,res,onecomb);
+            onecomb.remove(onecomb.size()-1);
+        }
+    }
+    public ArrayList<ArrayList<Integer>> combine(int n, int k) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        if(n<k||k==0) return res;
+        dfs(n,k,1,res,new ArrayList<Integer>());
+        return res;
+    }
+}
