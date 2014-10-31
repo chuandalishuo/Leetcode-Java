@@ -1,0 +1,11 @@
+public class Solution {
+    public int maxArea(int[] height) {
+        int start = 0, len = height.length, end = len-1, maxwater = Integer.MIN_VALUE;
+        while(start<end){
+            maxwater = Math.max(maxwater, (end-start)*Math.min(height[start],height[end]));
+            if(height[start]>height[end]) end--;
+            else start++;
+        }
+        return maxwater;
+    }
+}
