@@ -1,0 +1,29 @@
+/**
+ * Definition for binary tree
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public TreeNode helper(ArrayList<Integer> in, ArrayList<Integer> post, int instart, int inend, int poststart, int postend){
+        if(instart>inend || poststart>postend) return null;
+        TreeNode node = new TreeNode(post.get(postend));
+        int inroot = in.indexOf(post.get(postend));
+        int lenleft = inroot - instart;// 最关键一步：用inroot分隔开的左右子树长度确定postorder里的左右子树的分割
+        node.left = helper(in, post, instart, inroot-1, poststart, poststart+lenleft-1);
+        node.right = helper(in, post, inroot+1, inend, poststart+lenleft, postend-1);
+        return node;
+    }
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        ArrayList<Integer> in = new ArrayList<Integer>();
+        ArrayList<Integer> post = new ArrayList<Integer>();
+        for(int i=0; i<inorder.length;i++){
+            in.add(inorder[i]);
+            post.add(postorder[i]);
+        }
+        return helper(in, post, 0, inorder.length-1, 0, postorder.length-1);
+    }
+}
