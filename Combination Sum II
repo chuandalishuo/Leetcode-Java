@@ -1,0 +1,21 @@
+public class Solution {
+    public void dfs(int[] num, int target, int start, ArrayList<Integer> onesum, ArrayList<ArrayList<Integer>> res){
+        //if(target<0) return;
+        if(target==0&&!res.contains(onesum)) {res.add(new ArrayList<Integer>(onesum)); return;}
+        for(int i=start; i<num.length; i++){
+            if(target<num[i]) return;//剪枝
+            //if(i>0&&num[i]==num[i-1]) continue; 这里不能有这个剪枝，因为不能使用重复元素，但可以使用有相同值的不同元素.这里要判断!res.contains(onesum)
+            onesum.add(num[i]);
+            dfs(num, target - num[i], i+1, onesum, res);//与Combination Sum I 不同的地方，这里不能有重复元素，所以下一论从i+1开始
+            onesum.remove(onesum.size()-1);
+        }
+    }
+    public ArrayList<ArrayList<Integer>> combinationSum2(int[] num, int target) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        if(num.length==0) return res;
+        Arrays.sort(num);
+        ArrayList<Integer> onesum = new ArrayList<Integer>();
+        dfs(num, target, 0, onesum, res);
+        return res;
+    }
+}
