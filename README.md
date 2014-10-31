@@ -39,5 +39,5 @@ Solutions of leetcode coding problems
         
         10. Best Time to Buy and Sell Stock III (最大M段子和, 两侧DP)
         14. Binary Tree Maximum Path Sum
-        26.Container With Most Water (greedy, 两头夹逼测试每次保证不减，容积取决于短板)
+        26.Container With Most Water (greedy, 两头夹逼测试每次保证不减，容积取决于短板。夹逼过程还可以剪枝。)
         28.Convert Sorted List to Binary Search Tree (递归折半，全局变量遍历链表)
