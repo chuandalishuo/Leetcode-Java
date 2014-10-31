@@ -1,12 +1,13 @@
 public class Solution {
     public void dfs(int[] candidates, int start, int target, ArrayList<ArrayList<Integer>> res, ArrayList<Integer> path){
-        if(target<0) return; // 其实没大用，剪枝candidates[i]<=target使得不会到这
-        if(target==0 && !res.contains(path)){// 其实!res.contains(path)没大用，剪枝i>0 && candidates[i]==candidates[i-1]使得不会有相同path
+        // if(target<0) return; 其实没大用，剪枝candidates[i]>target使得不会到这
+        if(target==0){// 其实!res.contains(path)没大用，剪枝i>0 && candidates[i]==candidates[i-1]使得不会有相同path
             res.add(new ArrayList<Integer>(path));
             return;
         }
         for(int i=start; i<candidates.length; i++){// 找不重复的组合要不断向前，不能再回去找
-            if(candidates[i]<=target){//剪枝
+            if(candidates[i]>target){return;}//剪枝
+            else{
                 if(i>0 && candidates[i]==candidates[i-1]) continue;//剪枝
                 path.add(candidates[i]);
                 dfs(candidates, i, target-candidates[i], res, path);//因为元素可重复，所以下一论可以还以i开始
