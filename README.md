@@ -32,6 +32,7 @@ Solutions of leetcode coding problems
 2. Time consuming
 
         20.Clone Graph(dfs/bfs graph traversal + HashMap mark cloned)
+        24.Construct Binary Tree from Inorder and Postorder Traversal(递归，用inorder中左右子树长度确定postorder中左右子树的分割)
 3. Difficult
         
         10. Best Time to Buy and Sell Stock III (最大M段子和, 两侧DP)
