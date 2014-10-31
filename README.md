@@ -22,6 +22,7 @@ Solutions of leetcode coding problems
         18.Candy (前后扫描)
         19.Climbing Stairs(DP,斐波那契数列)
         22.Combination Sum II (深搜+目标递减+不断向后搜索+剪枝)
+        23.Combinations (深搜+目标递减+不断向后搜索)
 1. Need to do more times
     
         1. 3Sum (夹逼,剪枝)
