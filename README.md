@@ -25,6 +25,7 @@ Solutions of leetcode coding problems
         23.Combinations (深搜+目标递减+不断向后搜索)
         25.Construct Binary Tree from Preorder and Inorder Traversal (same as 24)
         27.Convert Sorted Array to Binary Search Tree(similar as 24, more simple, 递归折半)
+        .Trapping Rain Water(1.DP找到每个柱的左最高和右最高；2.先找最高的柱分成两半，两边向中间算，相似26)
 1. Need to do more times
     
         1. 3Sum (夹逼,剪枝)
