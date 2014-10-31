@@ -24,6 +24,7 @@ Solutions of leetcode coding problems
         22.Combination Sum II (深搜+目标递减+不断向后搜索+剪枝)
         23.Combinations (深搜+目标递减+不断向后搜索)
         25.Construct Binary Tree from Preorder and Inorder Traversal (same as 24)
+        27.Convert Sorted Array to Binary Search Tree(similar as 24, more simple, 递归折半)
 1. Need to do more times
     
         1. 3Sum (夹逼,剪枝)
