@@ -1,0 +1,21 @@
+public class Solution {
+    public int trap(int[] A) {
+        if(A.length==0) return 0;
+        int maxbar = A[0], maxind = 0;
+        for(int i=1; i<A.length; i++){
+            if(A[i]>maxbar){maxind=i; maxbar=A[i];}
+        }
+        int tolwater = 0;
+        int frontbar= A[0];
+        for(int i=1; i<maxind; i++){
+            if(A[i]<frontbar) tolwater += frontbar-A[i];
+            else {frontbar = A[i];}
+        }
+        int endbar= A[A.length-1];
+        for(int i=A.length-2; i>maxind; i--){
+            if(A[i]<endbar) tolwater += endbar-A[i];
+            else {endbar = A[i];}
+        }
+        return tolwater;
+    }
+}
