@@ -1,0 +1,22 @@
+public class Solution {
+    public int largestRectangleArea(int[] height) {
+        int maxarea = 0;
+        Stack<Integer> s = new Stack<Integer>();
+        for(int i=0; i<height.length;){//因为矩形高度由最矮柱决定
+            if(s.empty()||height[i]>=height[s.peek()]) {s.push(i); i++;}//栈里保留递增柱下标
+            else {
+                int h = height[s.pop()];//出栈，因为当前元素太小，栈顶元素只能决定到当前元素之前。
+                int wid = s.empty() ? i : i-1-s.peek();//如果栈已经为空，说明到目前为止所有元素（当前下标元素除外）
+//都比出栈元素高度要大（否则栈中肯定还有元素），所以矩阵面积就是高度乘以当前下标i。如果栈不为空，那么就是从当前栈顶
+//元素的下一个到当前下标的元素之前都比出栈元素高度大（因为栈顶元素第一个比当前出栈元素小的）。
+                maxarea = Math.max(maxarea, h*wid);//每出一个柱检测一下
+            }
+        }
+        while(!s.empty()){//剩下最后一个递增序列
+            int h = height[s.pop()];
+            int wid = s.empty() ? height.length : height.length-1-s.peek();
+            maxarea = Math.max(maxarea, h*wid);//每出一个柱检测一下
+        }
+        return maxarea;
+    }
+}
