@@ -33,6 +33,7 @@ Solutions of leetcode coding problems
         2. 3Sum Closest (夹逼,剪枝)
         13.Binary Tree Level Order Traversal II(reverse recursive, Collections.reverse(List))
         21.Combination Sum (深搜+目标递减+不断向后搜索+剪枝)
+        30.Count and Say(StringBuilder动态存储字符串)
 2. Time consuming
 
         20.Clone Graph(dfs/bfs graph traversal + HashMap mark cloned)
