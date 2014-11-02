@@ -1,0 +1,21 @@
+public class Solution {
+    public int findMin(int[] num) {
+        int l=0, r=num.length-1, min=Integer.MAX_VALUE;
+        while(l<=r){
+            int m=(r+l)/2;
+            if(num[m]<num[r]) {//m~r increase area
+                min = Math.min(min,num[m]);
+                r=m-1;
+            }
+            else if(num[m]>num[r]){//l~m increase area
+                min = Math.min(min,num[l]);
+                l=m+1;
+            }
+            else{// num[m]==num[r], can not decide increase area
+                min = Math.min(min,num[m]);
+                r--;
+            }
+        }
+        return min;
+    }
+}
