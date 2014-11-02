@@ -13,7 +13,6 @@ Solutions of leetcode coding problems
         7. Balanced Binary Tree (Recursive)
         8. Best Time to Buy and Sell Stock (greedy)
         9. Best Time to Buy and Sell Stock II (greedy)
-         . Maximum Subarray (DP)
         11.Binary Tree In order Traversal (Recursive)
         12.Binary Tree Level Order Traversal (Recursive)
         15.Binary Tree post order Traversal (Recursive)
@@ -25,8 +24,9 @@ Solutions of leetcode coding problems
         23.Combinations (深搜+目标递减+不断向后搜索)
         25.Construct Binary Tree from Preorder and Inorder Traversal (same as 24)
         27.Convert Sorted Array to Binary Search Tree(similar as 24, more simple, 递归折半)
-        .Trapping Rain Water(每个柱能储水取决于两侧最高柱高度较短的和当前柱高度差。 两种思路：1.DP找到每个柱的左最高和右最高；2.先找最高的柱分成两半，两边向中间算。相似26)
         29.Copy List with Random Pointer(制作重复链表，复制随机指针，断开重复链表。注意null判断)
+        .Maximum Subarray (DP)
+        .Trapping Rain Water(每个柱能储水取决于两侧最高柱高度较短的和当前柱高度差。两种思路：1.DP找到每个柱的左最高和右最高；2.先找最高的柱分成两半，两边向中间算。相似26)
 1. Need to do more times
     
         1. 3Sum (夹逼,剪枝)
@@ -35,8 +35,9 @@ Solutions of leetcode coding problems
         21.Combination Sum (深搜+目标递减+不断向后搜索+剪枝)
         30.Count and Say(StringBuilder动态存储字符串)
         31.Decode Ways(到当前可一步可两步，但一步当前不能是0，两步当前和前一位组成的数要10～26)
-        33.Divide Two Integers(位移操作达到指数级优化)
-        .Pow(x, n)(二分：half=Pow(x, n/2); Pow(x, n)=half x half x Pow(x, n%2))
+        33.Divide Two Integers(位移操作达到指数级优化)(类似Pow(x, n)，sqrt(x))
+        .Pow(x, n)(二分：half=Pow(x, n/2); Pow(x, n)=half x half x Pow(x, n%2)， 类似33，sqrt(x))
+        .Sqrt(x)(从b=1到e=x/2二分寻找:m=(b+e)/2, m*m最接近x时返回mid。)
 2. Time consuming
 
         20.Clone Graph(dfs/bfs graph traversal + HashMap mark cloned)
