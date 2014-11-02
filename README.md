@@ -45,4 +45,5 @@ Solutions of leetcode coding problems
         14. Binary Tree Maximum Path Sum
         26.Container With Most Water (容积取决于短板和间隔，greedy每次保证不减, 两头夹逼测试，间隔在缩短，就要保证短板在增高。夹逼过程还可以剪枝。)
         28.Convert Sorted List to Binary Search Tree (递归折半，全局变量遍历链表)
+        32.Distinct Subsequences(动规+滚动数组)
         . Largest Rectangle in Histogram(由每个柱高度决定的矩阵的宽度是距它最左和最右并不比它矮的柱之间的距离。one way is O(n^2). 高效的方法是维护递增堆栈，直到当前柱太矮，处理由之前比它高的每一个柱决定的面积：出栈一个柱，以它为高度；相应的矩形宽度是从当前矮柱的前一格到当前栈顶的柱的后一格（这两个柱比它矮，而其间的所有柱都比它高，都已出栈）。)
