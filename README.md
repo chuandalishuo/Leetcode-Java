@@ -36,6 +36,7 @@ Solutions of leetcode coding problems
         30.Count and Say(StringBuilder动态存储字符串)
         31.Decode Ways(到当前可一步可两步，但一步当前不能是0，两步当前和前一位组成的数要10～26)
         33.Divide Two Integers(位移操作达到指数级优化)
+        .Pow(x, n)(二分：half=Pow(x, n/2); Pow(x, n)=half x half x Pow(x, n%2))
 2. Time consuming
 
         20.Clone Graph(dfs/bfs graph traversal + HashMap mark cloned)
