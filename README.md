@@ -34,8 +34,9 @@ Solutions of leetcode coding problems
         13.Binary Tree Level Order Traversal II(reverse recursive, Collections.reverse(List))
         21.Combination Sum (深搜+目标递减+不断向后搜索+剪枝)
         30.Count and Say(StringBuilder动态存储字符串)
-        31.Decode Ways(到当前可一步可两步，但一步当前不能是0，两步当前和前一位组成的数要10～26)
+        31.Decode Ways(动规，到当前可一步可两步，但一步当前不能是0，两步当前和前一位组成的数要10～26，类似19)
         33.Divide Two Integers(位移操作达到指数级优化)(类似Pow(x, n)，sqrt(x))
+        34.Edit Distance(动规+滚动数组)
         .Pow(x, n)(二分：half=Pow(x, n/2); Pow(x, n)=half x half x Pow(x, n%2)， 类似33，sqrt(x))
         .Sqrt(x)(从b=1到e=x/2二分寻找:m=(b+e)/2, m*m最接近x时返回mid。)
 2. Time consuming
