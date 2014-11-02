@@ -1,0 +1,46 @@
+//深搜：大数据会超时
+public class Solution {
+    public static void dfs(String S, int s, String T, int t){
+        if(t>=T.length()) { count++; return;}
+        //if(s>=S.length()) return;
+        for(int i=s; i<S.length()-T.length()+t+1; i++){//当前t只能匹配S中从s到S.length()-T.length()+t
+            if(S.charAt(i)==T.charAt(t)) dfs(S,i+1,T,t+1);
+        }
+    }
+    public static int count;
+    public static int numDistinct(String S, String T) {
+        count=0;
+        dfs(S,0,T,0);
+        return count;
+    }
+}
+
+//动规
+public class Solution {
+    public int numDistinct(String S, String T) {
+        int[][] count = new int[T.length()+1][S.length()+1];
+        Arrays.fill(count[0],1);
+        for(int i=1; i<=S.length(); i++){
+            for(int j=1; j<=T.length();j++){
+                if(j>i) count[j][i]=0;
+                else if(S.charAt(i-1)!=T.charAt(j-1)) count[j][i] = count[j][i-1];
+                else count[j][i] = count[j][i-1] + count[j-1][i-1];
+            }
+        }
+        return count[T.length()][S.length()];
+    }
+}
+
+//动规+滚动数组
+public class Solution {
+    public int numDistinct(String S, String T) {
+        int[] count = new int[T.length()+1];
+        count[0]=1;
+        for(int i=1; i<=S.length(); i++){
+            for(int j=T.length(); j>0;j--){//从尾到头扫描以防重复
+                count[j] += S.charAt(i-1)==T.charAt(j-1)?count[j-1]:0;
+            }
+        }
+        return count[T.length()];
+    }
+}
