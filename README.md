@@ -45,6 +45,10 @@ Solutions of leetcode coding problems
         20.Clone Graph(dfs/bfs graph traversal + HashMap mark cloned)
         24.Construct Binary Tree from Inorder and Postorder Traversal (递归，用inorder中左右子树长度确定postorder中左右子树的分割)
         36.Find Minimum in Rotated Sorted Array(二分查找，注意边界)
+        37.Find Minimum in Rotated Sorted ArrayII(二分查找，注意边界)
+        .Search Insert Position(二分查找，注意边界)
+        .Search in Rotated Sorted Array(二分查找，注意边界)
+        .Search in Rotated Sorted ArrayII(二分查找，注意边界)
 3. Difficult
         
         10. Best Time to Buy and Sell Stock III (最大M段子和, 两侧DP)
