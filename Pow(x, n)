@@ -1,0 +1,12 @@
+public class Solution {
+    public double powpos(double x, long n) {
+        if(n==0) return 1.0;
+        if(n==1) return x;
+        double res = powpos(x,n/2);
+        return res*res*powpos(x,n%2);
+    }
+    public double pow(double x, int n) {
+        if(n<0) return 1.0/powpos(x,0-(long)n);
+        else return powpos(x,(long)n);
+    }
+}
