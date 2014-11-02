@@ -1,0 +1,21 @@
+public class Solution {
+    public int divide(int dividend, int divisor) {
+        /*思路：在dividend中不断减去divisor，计数。
+        细节：要考虑负数情况，要提高效率，divisor不断乘2（位移操作）*/
+        boolean sign = (dividend>0&&divisor<0) || (dividend<0&&divisor>0);
+        long a = Math.abs((long)dividend);//考虑溢出
+        long b = Math.abs((long)divisor);
+        int res=0;
+        while(a>=b){
+            long base = b; int shift=0;
+            while(base<=a){
+                base = base<<1;
+                shift++;
+            }
+            shift--; base = base>>1;//base回退1位到刚好不大于a
+            a = a - base;
+            res += 1<<shift;
+        }
+        return sign ? 0-res : res;
+    }
+}
