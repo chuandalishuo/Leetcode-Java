@@ -1,0 +1,18 @@
+public class Solution {
+    public int search(int[] A, int target) {
+        int l=0, r=A.length-1;
+        while(l<=r){
+            int m=(l+r)/2;
+            if(target==A[m]) return m;
+            else if(A[m]<A[r]){// m~r递增，不受pivot影响
+                if(A[m]<target&&target<=A[r]) l=m+1;//target<=A[r] include A[r]
+                else r=m-1;
+            }
+            else{//A[m]>=A[r]，l~m递增，不受pivot影响
+                if(A[l]<=target&&target<A[m]) r=m-1;//A[l]<=target indluce A[l]
+                else l=m+1;
+            }
+        }
+        return -1;
+    }
+}
