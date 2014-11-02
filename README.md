@@ -35,6 +35,7 @@ Solutions of leetcode coding problems
         21.Combination Sum (深搜+目标递减+不断向后搜索+剪枝)
         30.Count and Say(StringBuilder动态存储字符串)
         31.Decode Ways(到当前可一步可两步，但一步当前不能是0，两步当前和前一位组成的数要10～26)
+        33.Divide Two Integers(位移操作达到指数级优化)
 2. Time consuming
 
         20.Clone Graph(dfs/bfs graph traversal + HashMap mark cloned)
