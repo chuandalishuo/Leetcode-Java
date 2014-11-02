@@ -1,9 +1,15 @@
 1. 最大子段和问题，最大子矩阵和问题，最大m子段和问题 
 http://blog.csdn.net/liufeng_king/article/details/8632430
 http://blog.csdn.net/linhuanmars/article/details/23236995
+http://5372221.blog.51cto.com/5362221/919590
+http://www.tuicool.com/articles/vqyi6j
 解法：动规
 Best Time to Buy and Sell Stock III
 Maximum Subarray
 
 2. 夹逼+剪枝ksum
 twosum, 3sum, 4sum, 3sum closest
+
+3. 动规+滚动数组
+
+4. 二分查找+递增区间确定
