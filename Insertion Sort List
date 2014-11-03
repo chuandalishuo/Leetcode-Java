@@ -34,3 +34,22 @@ public class Solution {
         return dumy.next;
     }
 }
+//更简洁的思路：拆分成两个链表，一个已排好序(begin with dumy)，一个是剩下没排序的(begin with next/cur)。当cur为空，说明没有未排序的了。
+public class Solution {
+    public ListNode insertionSortList(ListNode head) {
+        if(head==null) return null;
+        ListNode dumy = new ListNode(0);
+        ListNode pre = dumy;
+        ListNode cur = head;
+        ListNode next = cur.next;
+        while(cur!=null){
+            next = cur.next;
+            pre = dumy;
+            while(pre.next!=null&&pre.next.val<=cur.val) pre = pre.next;
+            cur.next = pre.next;
+            pre.next = cur;
+            cur = next;
+        }
+        return dumy.next;
+    }
+}
