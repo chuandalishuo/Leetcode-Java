@@ -1,0 +1,19 @@
+public class Solution {
+    public void dfs(String digits, int start, HashMap<Integer,String> map, ArrayList<String> res, String letters){
+        if(start==digits.length()) {res.add(letters); return;}
+        String str = map.get(digits.charAt(start)-'0');
+        for(int i=0; i<str.length(); i++){
+            dfs(digits, start+1, map, res, letters+str.charAt(i));
+        }
+    }
+    public ArrayList<String> letterCombinations(String digits) {
+        ArrayList<String> res = new ArrayList<String>();
+        String[] pad = {" ","#","abc","def","ghi","jkl", "mno", "pqrs", "tuv", "wxyz"};
+        HashMap<Integer,String> map = new HashMap<Integer,String>();
+        for(int i=0; i<10; i++){
+            map.put(i,pad[i]);
+        }
+        dfs(digits,0,map,res,"");
+        return res;
+    }
+}
