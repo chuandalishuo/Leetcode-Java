@@ -1,0 +1,9 @@
+public class Solution {
+    public boolean canJump(int[] A) {
+        int maxdis = 0, i=0;
+        for(; i<A.length&&maxdis>=i; i++){
+            maxdis = Math.max(maxdis, i+A[i]);
+        }
+        return i==A.length?true:false;
+    }
+}
