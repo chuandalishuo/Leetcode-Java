@@ -1,0 +1,22 @@
+public class Solution {
+    public int longestConsecutive(int[] num) {
+        HashMap<Integer, Boolean> visited = new HashMap<Integer, Boolean>();
+        for(int i=0; i<num.length; i++){
+            visited.put(num[i],false);
+        }
+        int global=0;
+        for(int i=0; i<num.length; i++){
+            if(visited.get(num[i])) continue;
+            visited.put(num[i],true);
+            int local = 1;
+            for(int j=num[i]+1; visited.containsKey(j);j++){
+                local++; visited.put(j,true);
+            }
+            for(int j=num[i]-1; visited.containsKey(j);j--){
+                local++; visited.put(j,true);
+            }
+            global = Math.max(local, global);
+        }
+        return global;
+    }
+}
