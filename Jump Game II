@@ -1,0 +1,17 @@
+public class Solution {
+    public int jump(int[] A) {
+        if(A.length<=1) return 0;
+        int step = 1;
+        int maxcover = A[0]; int i=0;
+        while(i<A.length&&maxcover>i){
+            if(maxcover>=A.length-1) return step;
+            int oldcover = maxcover;
+            for(int j=i+1; j<=oldcover; j++){
+                maxcover = Math.max(maxcover,j+A[j]);
+            }
+            i = oldcover;
+            step++;
+        }
+        return -1;
+    }
+}
