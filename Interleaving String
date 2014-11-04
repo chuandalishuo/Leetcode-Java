@@ -32,3 +32,23 @@ public class Solution {
         return res[s1.length()][s2.length()];
     }
 }
+//动规+滚动数组
+public class Solution {
+    public boolean isInterleave(String s1, String s2, String s3) {
+        if(s1.length()+s2.length()!=s3.length()) return false;
+        String shortword = s1.length()>s2.length()?s2:s1;
+        String longword = s1.length()>s2.length()?s1:s2;
+        boolean[] res = new boolean[shortword.length()+1];
+        res[0]=true;
+        for(int i=1; i<=shortword.length();i++){
+            res[i] = res[i-1]&&shortword.charAt(i-1)==s3.charAt(i-1);
+        }
+        for(int i=1; i<=longword.length();i++){
+            res[0] = res[0]&&longword.charAt(i-1)==s3.charAt(i-1);
+            for(int j=1; j<=shortword.length();j++){
+                res[j] = res[j]&&longword.charAt(i-1)==s3.charAt(i+j-1) || res[j-1]&&shortword.charAt(j-1)==s3.charAt(i+j-1);
+            }
+        }
+        return res[shortword.length()];
+    }
+}
