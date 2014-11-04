@@ -1,0 +1,16 @@
+public class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int[] ind = new int[128];
+        Arrays.fill(ind, -1);
+        int maxlen = 0, start=0;
+        for(int i=0; i<s.length();i++){
+            if(ind[s.charAt(i)]>=0 && ind[s.charAt(i)]>=start){//有重复，并且在新start之后，则要算一次距离
+                maxlen=Math.max(maxlen,i-start);//贪心算最大距离
+                start = ind[s.charAt(i)]+1;//新start是上一个重复字符之后
+            }
+            ind[s.charAt(i)] = i;//记录字符出现的位置
+        }
+        maxlen=Math.max(maxlen,s.length()-start);//别忘了最后的检查
+        return maxlen;
+    }
+}
