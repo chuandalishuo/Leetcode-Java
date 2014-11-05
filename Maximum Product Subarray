@@ -1,0 +1,12 @@
+public class Solution {
+    public int maxProduct(int[] A) {
+        int maxlocal = 1, minlocal = 1, maxglobal = Integer.MIN_VALUE;
+        for(int i=0; i<A.length; i++){
+            int temp = maxlocal;
+            maxlocal = Math.max(Math.max(maxlocal*A[i], minlocal*A[i]), A[i]);
+            minlocal = Math.min(Math.min(temp*A[i], minlocal*A[i]), A[i]);
+            maxglobal = Math.max(maxglobal, maxlocal);
+        }
+        return maxglobal;
+    }
+}
