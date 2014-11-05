@@ -1,3 +1,4 @@
+//map：L中的每个不同的词的出现次数（L中的词可能重复）。n：单词长度，m；单词个数，外循环找index,逐个字符扫描S（i=0：S.length()-m*n），内循环找单词，按逐个单词扫描S（j=0:m）,str = S.substring(i+j*n, i+(j+1)*n)。每次外循环向下走一次，拷贝一份map。如果str在拷贝的map中，减去相应的单词（或次数）。如果不在，停止内部扫描。内部扫描结束，如果拷贝的map为空，则记录外循环的index。
 public class Solution {
     public ArrayList<Integer> findSubstring(String S, String[] L) {
         ArrayList<Integer> res = new ArrayList<Integer>();
@@ -24,7 +25,7 @@ public class Solution {
             else temp.clear();
             
         }
-        // 更高效的算法（O(s.length)）
+        // 更高效的算法（O(s.length)），滚动窗口
         public ArrayList<Integer> findSubstring(String S, String[] L) {  
     // Note: The Solution object is instantiated only once and is reused by each test case.  
     ArrayList<Integer> res = new ArrayList<Integer>();  
