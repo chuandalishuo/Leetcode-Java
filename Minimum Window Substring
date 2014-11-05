@@ -1,0 +1,38 @@
+/*待序：map：T中的每个不同的字母的出现次数（T中的字母可能重复）。n：单词长度，m；单词个数，外循环找index,逐个字符扫描
+S（i=0：S.length()-m*n），内循环找单词，按逐个单词扫描S（j=0:m）,str = S.substring(i+j*n, i+(j+1)*n)。
+每次外循环向下走一次，拷贝一份map。如果str在拷贝的map中，减去相应的单词（或次数）。如果不在，停止内部扫描。
+内部扫描结束，如果拷贝的map为空，则记录外循环的index。*/
+public class Solution {
+    public String minWindow(String S, String T) {
+        if(S.length()==0||S.length()<T.length()) return "";
+        HashMap<Character,Integer> map = new HashMap<Character,Integer>();
+        for(int i=0; i<T.length(); i++){// keys are the characters in T, integer values are times the character show in T
+           if(map.containsKey(T.charAt(i))) map.put( T.charAt(i), map.get(T.charAt(i))+1 );
+           else map.put(T.charAt(i), 1);
+        }
+        int count=0;// count is the number of characters in T are covered
+        int left=0, minleft=0;
+        int minlen = S.length()+1;
+        for(int i=0; i<S.length();i++){
+            if(map.containsKey(S.charAt(i))){// if one character in S appear in T
+                map.put( S.charAt(i), map.get(S.charAt(i))-1 ); // reduce one from its mapped value
+                if(map.get(S.charAt(i))>=0) count++; // if the mapped value is less than 0, it is a redundant character in S, count doesn't increase
+                while(count==T.length()){//now cover all characters in T
+                    if(minlen>i-left+1){ // record the minimum length and the new minleft, later we need it to return the substring
+                        minlen = i-left+1;
+                        minleft = left;
+                    }
+                    if(map.containsKey(S.charAt(left))){// if the left most character in S is also in T
+                        map.put( S.charAt(left), map.get(S.charAt(left))+1 );// before move to right, add one to the mapped value(means removed a redundant character if the value still samller than 0 or removed a covered character if the value become bigger than 0)
+                        if(map.get(S.charAt(left))>0) { // if the mapped value become bigger than 0, means a covered character is removed
+                            count--; 
+                        }
+                    }
+                    left++;
+                }
+            }
+        }
+        if(minlen==S.length()+1) return ""; 
+        return S.substring(minleft,minleft+minlen);
+    }
+}
