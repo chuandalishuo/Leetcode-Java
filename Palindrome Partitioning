@@ -1,0 +1,31 @@
+public class Solution {
+    public static boolean isPalindrome(String s, int b, int e){
+        if(b>e) return false;
+        while(b<=e){
+            if(s.charAt(b)!=s.charAt(e)) return false;
+            b++;e--;
+        }
+        return true;
+    }
+    public static void find(String s, int start, ArrayList<ArrayList<String>> result, ArrayList<String> path){
+        if(start==s.length()){
+            result.add(new ArrayList<String>(path));
+            return;
+        }
+        for(int i=start; i<s.length();i++){
+            if(isPalindrome(s,start,i)){
+                path.add(s.substring(start,i+1));
+                find(s,i+1,result,path);
+                path.remove(path.size()-1);
+            }   
+        }
+    }
+    public ArrayList<ArrayList<String>> partition(String s) {
+        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+        if(s.length()==0||s==null) {return result;}
+        ArrayList<String> path = new ArrayList<String>();
+        find(s,0,result,path);
+        //select paths that from 0 to s.length()-1
+        return result;
+    }
+}
