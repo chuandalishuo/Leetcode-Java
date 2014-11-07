@@ -1,0 +1,62 @@
+//深搜
+public ArrayList<String> wordBreak(String s, Set<String> dict) {  
+    ArrayList<String> res = new ArrayList<String>();  
+    if(s==null || s.length()==0)  
+        return res;  
+    helper(s,dict,0,"",res);  
+    return res;  
+}  
+private void helper(String s, Set<String> dict, int start, String item, ArrayList<String> res)  
+{  
+    if(start>=s.length())  
+    {  
+        res.add(item);  
+        return;  
+    }  
+    StringBuilder str = new StringBuilder();  
+    for(int i=start;i<s.length();i++)  
+    {  
+        str.append(s.charAt(i));  
+        if(dict.contains(str.toString()))  
+        {  
+            String newItem = item.length()>0?(item+" "+str.toString()):str.toString();  
+            helper(s,dict,i+1,newItem,res);  
+        }  
+    }  
+} 
+//动规
+public class Solution {
+    public void dfs(String s,ArrayList<ArrayList<Integer>> precuts, ArrayList<String> result,ArrayList<Integer> cuts, String str,int curind,int level){
+        if(level<0) {result.add(str); return;}
+        if(level==0) {if(curind==s.length()) result.add(s); else result.add(s.substring(0,curind)+" "+str); return;}
+        ArrayList<Integer> precut = precuts.get(level);
+        for(int i=0; i<precut.size(); i++){
+            int preind = precut.get(i);
+            if(curind==s.length())
+                dfs(s, precuts, result, cuts, s.substring(preind,curind), preind, cuts.indexOf(preind)-1);
+            else
+                dfs(s, precuts, result, cuts, s.substring(preind,curind)+" "+str, preind, cuts.indexOf(preind)-1);
+        }
+    }
+    public ArrayList<String> wordBreak(String s, Set<String> dict) {
+        ArrayList<ArrayList<Integer>> precuts = new ArrayList<ArrayList<Integer>>();// store all previous connected cuts for each true cut
+        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<Integer> cuts = new ArrayList<Integer>();// store the positions of all legal cuts
+        cuts.add(0);// record all cut positions
+        for(int i=1; i<=s.length();i++){
+            ArrayList<Integer> precut = new ArrayList<Integer>();
+            for(int j=0; j<cuts.size(); j++){ // only test the substring from previous cuts position to current position i
+                if(dict.contains(s.substring(cuts.get(j),i))){
+                    precut.add(cuts.get(j)); // record all the previous cut connect to current cut
+                }
+            }
+            if(precut.size()>0){ //cut is true
+                precuts.add(precut); // record all precut for the curcut
+                cuts.add(i); // record the current cut
+            }
+        }
+        if(cuts.get(cuts.size()-1)!=s.length()) return result;
+        dfs(s, precuts, result, cuts,"", s.length(), precuts.size()-1); // track all paths from end to begin, store all paths in result
+        return result;
+    }
+}
