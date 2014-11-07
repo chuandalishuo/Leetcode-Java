@@ -1,0 +1,21 @@
+public class Solution {
+    public void nextPermutation(int[] num) {
+        int l=0, r=num.length-1;
+        for(int i = num.length-2; i>=0; i--){
+            if(num[i]<num[i+1]) {
+                l = i;
+                for(int j = num.length-1; j>l; j--){
+                    if(num[j]>num[l]) {
+                        r = j;
+                        int temp = num[r];
+                        num[r] = num[l];
+                        num[l] = temp;
+                        Arrays.sort(num,l+1,num.length);
+                        return;
+                    }
+                }
+            }
+        }
+        Arrays.sort(num,0,num.length);
+    }
+}
