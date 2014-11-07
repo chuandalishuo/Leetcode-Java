@@ -1,0 +1,42 @@
+public class Solution {
+    public boolean isValid(int[] queenlist, int col, int row, int n){
+        for(int i=0; i<row; i++){
+            if(queenlist[i]==col) return false;
+            if(col-queenlist[i] == row-i) return false;
+            if(col-queenlist[i] == i-row) return false;
+        }
+        return true;
+    }
+    public void dfs(int row, int n, int[] queenlist, ArrayList<String[]> result){
+        if(row==n){//deep to the end, process
+            StringBuilder[] strbu = new StringBuilder[n];
+            for(int i=0; i<n; i++){
+                StringBuilder temp = new StringBuilder();
+                for(int j=0; j<n; j++){
+                    if(j==queenlist[i]) temp.append('Q');
+                    else temp.append('.');
+                }
+                strbu[i] = temp;
+            }
+            String[] str = new String[n];
+            for(int i=0; i<n; i++){
+                str[i] = strbu[i].toString();
+            }
+            result.add(str);
+        }
+        else{
+            for(int i=0; i<n; i++){
+                if(isValid(queenlist, i, row, n)){
+                    queenlist[row] = i;
+                    dfs(row+1, n, queenlist, result);
+                }
+            }
+        }
+    }
+    public ArrayList<String[]> solveNQueens(int n) {
+        ArrayList<String[]> result = new ArrayList<String[]>();
+        int[] queenlist = new int[n];
+        dfs(0, n, queenlist, result);
+        return result;
+    }
+}
