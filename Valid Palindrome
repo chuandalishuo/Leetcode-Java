@@ -1,0 +1,18 @@
+public class Solution {
+    public boolean isvalid(int i, String s){
+        return i<s.length() && ((s.charAt(i)>='a' && s.charAt(i)<='z') || (s.charAt(i)>='0' && s.charAt(i)<='9'));
+    }
+    public boolean isPalindrome(String s) {
+        s = s.trim();
+        s = s.toLowerCase();
+        if(s.length()<=1) return true;
+        int l=0, r=s.length()-1;
+        while(l<r){
+            if(!isvalid(l,s)) {l++;continue;}//continue;是关键，即如果当前字符没准备好，要跳过判断。
+            if(!isvalid(r,s)) {r--;continue;}
+            if(s.charAt(l)==s.charAt(r)){l++; r--;}//判断
+            else return false;
+        }
+        return true;
+    }
+}
