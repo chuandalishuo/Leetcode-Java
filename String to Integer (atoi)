@@ -1,0 +1,20 @@
+//先出去前后空格，首字母可以为0，+，-；中间出现非数字的字母，停止向后处理。如果字符串不合法，返回0.最后检查溢出。
+public class Solution {
+    public int atoi(String str) {
+        String newstr = str.trim();
+        if(newstr.equals("")) return 0;
+        char flag='+';
+        long val = 0;
+        if(newstr.charAt(0)=='+' || newstr.charAt(0)=='-') {flag=newstr.charAt(0);}// store flag
+        else if(newstr.charAt(0)>='0' && newstr.charAt(0)<='9') val = newstr.charAt(0)-'0'; // first digit can be 0; but in the result
+        else return 0; // first digit can not be other characters
+        for(int i=1; i<newstr.length();i++){
+            if(newstr.charAt(i)>='0' && newstr.charAt(i)<='9') {val= val*10+(newstr.charAt(i)-'0');}
+            else break; // digits in the middle can not be other characters;
+        }
+        if(flag=='-') val = val*(-1);
+        if(val>Integer.MAX_VALUE) return Integer.MAX_VALUE; 
+        if(val<Integer.MIN_VALUE) return Integer.MIN_VALUE; // check overflow
+        return (int)val;
+    }
+}
