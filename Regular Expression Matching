@@ -1,0 +1,25 @@
+public class Solution {
+    public boolean isMatch(String s, String p) {  
+        return helper(s,p,0,0);  
+    }  
+    private boolean helper(String s, String p, int i, int j)  
+    {  
+        if(j==p.length())   return i==s.length();  
+        if(j==p.length()-1 || p.charAt(j+1)!='*')  // next char is not '*', or p to the end (there is no next char in p)
+        {  
+            if(i!=s.length()&&(s.charAt(i)==p.charAt(j)||p.charAt(j)=='.'))//then must match current character in p and s
+                return helper(s,p,i+1,j+1);  
+            else  
+                return false; 
+        }  
+        else{//p not to end yet and next char in p is '*'  
+            while(i<s.length() && (s.charAt(i)==p.charAt(j) || p.charAt(j)=='.'))  
+            {  
+                if(helper(s,p,i,j+2))  
+                    return true;  
+                i++;  
+            }  
+            return helper(s,p,i,j+2);  
+        }
+    }   
+}
