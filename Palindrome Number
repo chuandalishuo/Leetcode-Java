@@ -1,0 +1,15 @@
+public class Solution {
+    public boolean isPalindrome(int x) {
+        if(x<0) return false;
+        int L = (int)Math.log10(x)+1;
+        if(L<2) return true;
+        while(L>=2){
+            int h = (int)(x/Math.pow(10,L-1));
+            int t = x%10;
+            if(h!=t) return false;
+            x = (int)(x%Math.pow(10,L-1)/10);
+            L = L-2;
+        }
+        return true;
+    }
+}
