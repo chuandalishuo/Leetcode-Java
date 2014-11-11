@@ -1,0 +1,27 @@
+public class Solution {
+    public boolean isMatch(String s, String p) {
+    int begins = 0, beginp = 0, i, j; boolean start = false;
+        for(i=begins, j=beginp; i<s.length(); i++,j++){
+            if(j<p.length()&&p.charAt(j)=='?') {continue; }// both s and p move forward one
+            else if(j<p.length()&&p.charAt(j)=='*'){
+                start=true;
+                begins = i; beginp = j;
+                while(beginp<p.length()&&(p.charAt(beginp)=='*')) beginp++;// find the next not '*' char
+                if(beginp==p.length()) return true;// all left in p are '*', so they can match any char in s
+                i=begins-1; j=beginp-1;
+            }
+            else{// current char in p is normal char
+                if(j>=p.length()||p.charAt(j)!=s.charAt(i)) {
+                    if(!start) return false;
+                    begins++;
+                    i=begins-1; j=beginp-1;
+                }
+            }
+           
+        }
+        while(j<p.length()&&p.charAt(j)=='*'){
+            j++;
+        }
+        return j==p.length()&&i==s.length();
+    }
+  }
